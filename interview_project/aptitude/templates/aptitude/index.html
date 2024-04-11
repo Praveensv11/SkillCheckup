@@ -4,6 +4,15 @@
 
 <h1>Aptitude</h1>
 
-{{question}}
+{% for result in results %}
+    <h4>{{result.question}}</h4>
+
+    <ul>
+    {% for option in result.options %}
+        <li>{{option}}</li>
+    {% endfor %}
+    </ul>
+    <p>{{result}}</p>
+{% endfor %}
 
 {% endblock  %}

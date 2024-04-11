@@ -1,11 +1,12 @@
 from django.shortcuts import render
 import requests
 
-response = requests.get('https://aptitude-api.vercel.app/Random')
-question_data = response.json()
-question = question_data["question"]
+results = []
+for i in range(3):
+    response = requests.get('https://aptitude-api.vercel.app/Random')
+    results.append(response.json())
 
 def index(request):
     return render(request, 'aptitude/index.html', {
-        'question' : question,
+        'results' : results,
     })
